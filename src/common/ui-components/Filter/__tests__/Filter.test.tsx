@@ -3,17 +3,37 @@ import Filter, { FilterOptions } from '../Filter';
 import { shallow, ShallowWrapper } from 'enzyme';
 
 describe('Filter', () => {
-  const filterOptions: FilterOptions<string>[] = [
-    { type: 'Kulkuyhteydet saariin', items: ['Vesibussi', 'Lautta', 'Silta'] },
-    { type: 'Palvelut saarissa', items: ['Ravintola', 'Kahvila', 'Sauna'] },
-    { type: 'Retkeily', items: ['Telttailu sallittu', 'Kaivo'] }
+  const filterOptions = [
+    {
+      type: 'Kulkuyhteydet saariin',
+      items: [
+        { name: 'Vesibussi', key: 'water_bus' },
+        { name: 'Lautta', key: 'ferry' },
+        { name: 'Silta', key: 'bridge' }
+      ]
+    },
+    {
+      type: 'Palvelut saarissa',
+      items: [
+        { name: 'Ravintola', key: 'restaurant' },
+        { name: 'Kahvila', key: 'cafe' },
+        { name: 'Sauna', key: 'sauna' }
+      ]
+    },
+    {
+      type: 'Retkeily',
+      items: [
+        { name: 'Telttailu sallittu', key: 'camping' },
+        { name: 'Kaivo', key: 'well' }
+      ]
+    }
   ];
 
   const mockData = [
-    ['Ravintola'],
-    ['Ravintola', 'Sauna'],
-    ['Telttailu sallittu'],
-    ['Kahvila', 'Vesibussi']
+    ['restaurant'],
+    ['restaurant', 'sauna'],
+    ['camping'],
+    ['cafe', 'water_bus']
   ];
 
   let wrapper: ShallowWrapper;
@@ -59,7 +79,7 @@ describe('Filter', () => {
     wrapper.find('button.showButton').simulate('click');
 
     expect(mockOnShow.mock.calls.length).toBe(1);
-    expect(mockOnShow.mock.calls[0][0][0]).toBe('Vesibussi');
+    expect(mockOnShow.mock.calls[0][0][0]).toBe('water_bus');
   });
 
   it('0 matches disables show', () => {

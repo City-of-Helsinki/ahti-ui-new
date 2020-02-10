@@ -5,9 +5,14 @@ import styles from './Filter.module.scss';
 
 const cx = classNames.bind(styles);
 
+export interface FilterItem<T> {
+  readonly name: string;
+  readonly key: T;
+}
+
 export interface FilterOptions<T> {
-  type: string;
-  items: T[];
+  readonly type: string;
+  readonly items: FilterItem<T>[];
 }
 
 export interface FilterProps<T> {
@@ -82,17 +87,17 @@ const Filter: FilterI = ({
                 {option.items.map((item, id) => (
                   <button
                     key={id}
-                    onClick={() => onToggle(item)}
+                    onClick={() => onToggle(item.key)}
                     className={cx(styles.filterOption, {
-                      activeButton: selected.has(item)
+                      activeButton: selected.has(item.key)
                     })}
                   >
-                    {selected.has(item) && (
+                    {selected.has(item.key) && (
                       <IconCheck
                         className={cx(styles.icons, styles.iconsCheck)}
                       />
                     )}
-                    {item}
+                    {item.name}
                   </button>
                 ))}
               </div>

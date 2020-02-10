@@ -8,16 +8,36 @@ export default {
 
 export const IslandFiltering = () => {
   const filterOptions = [
-    { type: 'Kulkuyhteydet saariin', items: ['Vesibussi', 'Lautta', 'Silta'] },
-    { type: 'Palvelut saarissa', items: ['Ravintola', 'Kahvila', 'Sauna'] },
-    { type: 'Retkeily', items: ['Telttailu sallittu', 'Kaivo'] }
+    {
+      type: 'Kulkuyhteydet saariin',
+      items: [
+        { name: 'Vesibussi', key: 'water_bus' },
+        { name: 'Lautta', key: 'ferry' },
+        { name: 'Silta', key: 'bridge' }
+      ]
+    },
+    {
+      type: 'Palvelut saarissa',
+      items: [
+        { name: 'Ravintola', key: 'restaurant' },
+        { name: 'Kahvila', key: 'cafe' },
+        { name: 'Sauna', key: 'sauna' }
+      ]
+    },
+    {
+      type: 'Retkeily',
+      items: [
+        { name: 'Telttailu sallittu', key: 'camping' },
+        { name: 'Kaivo', key: 'well' }
+      ]
+    }
   ];
 
   const mockData = [
-    ['Ravintola'],
-    ['Ravintola', 'Sauna'],
-    ['Telttailu sallittu', 'Vesibussi'],
-    ['Kahvila', 'Vesibussi']
+    ['restaurant'],
+    ['restaurant', 'sauna'],
+    ['camping'],
+    ['cafe', 'water_bus']
   ];
 
   return (
