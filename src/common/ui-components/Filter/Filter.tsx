@@ -63,7 +63,7 @@ const Filter: FilterI = ({
   };
 
   return (
-    <div className={cx({ container: true }, className)}>
+    <div className={cx(styles.container, className)}>
       <div>
         <div className={styles.headerContainer}>
           <button onClick={() => onClose()} className={styles.closeButton}>
@@ -83,13 +83,14 @@ const Filter: FilterI = ({
                   <button
                     key={id}
                     onClick={() => onToggle(item)}
-                    className={cx({
-                      filterOption: true,
+                    className={cx(styles.filterOption, {
                       activeButton: selected.has(item)
                     })}
                   >
                     {selected.has(item) && (
-                      <IconCheck className={styles.icons} />
+                      <IconCheck
+                        className={cx(styles.icons, styles.iconsCheck)}
+                      />
                     )}
                     {item}
                   </button>
