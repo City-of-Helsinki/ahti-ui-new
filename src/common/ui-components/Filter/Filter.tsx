@@ -3,7 +3,6 @@ import { IconCheck, IconClose } from 'hds-react/lib';
 import classNames from 'classnames/bind';
 import styles from './Filter.module.scss';
 
-// hello, this is a test
 const cx = classNames.bind(styles);
 
 export interface FilterItem<T> {
